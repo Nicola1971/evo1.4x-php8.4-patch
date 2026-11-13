@@ -26,3 +26,14 @@ assets/plugins/qm/qm.inc.php
 Fixed “Trying to access array offset on false” in
 assets/snippets/docinfo/snippet.docinfo.php
 (0.4.2: the snippet now handles false from getPageInfo() and from the TV functions, and returns an empty string when docid is empty or 0.)
+### Store module (Extras)
+Fixed “Undefined array key” warnings and “mysqli::escape_string(): Passing null” deprecations in
+assets/modules/store/installer/instprocessor-fast.php
+assets/modules/store/installer/setup.info.php
+(Optional docblock fields now default to an empty string, and $_POST reads are checked. mysql_error(), which was removed in PHP 7, has been replaced. Also fixed:
+	• An SQL error from the undefined $dbase when assigning TVs to templates stopped the installation. With *, a TV was assigned only to the first template.
+	• A plugin whose description contained quotes or apostrophes was disabled and duplicated on every update.
+	• Plugin event names written with spaces (OnA, OnB) were not linked.
+	• A plugin with no events in its docblock had all its existing events removed.
+	• A missing installset caused a fatal TypeError.
+	• Categories were escaped twice.)
