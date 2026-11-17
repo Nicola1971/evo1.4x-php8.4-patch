@@ -37,3 +37,8 @@ assets/modules/store/installer/setup.info.php
 - A plugin with no events in its docblock had all its existing events removed.
 - A missing installset caused a fatal TypeError.
 - Categories were escaped twice.)
+
+### Dashboard widget “Recently edited resources”
+Fixed the empty resource overview in
+manager/actions/welcome.static.php
+(getRecentInfoList(): the query loaded only 6 fields, so long title, description, summary and alias always showed “(Not set)” and the template always showed “(blank)”. It now also loads longtitle, description, introtext, alias, type, cacheable, hidemenu and template, but still not content. This isn’t a PHP 8 issue: the bug dates back to 1.4.13. It was introduced by commit c433ac00 in evolution-cms/evolution and is still present in 1.4.37.)
