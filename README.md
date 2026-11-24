@@ -26,6 +26,10 @@ assets/plugins/qm/qm.inc.php
 Fixed “Trying to access array offset on false” in
 assets/snippets/docinfo/snippet.docinfo.php
 (0.4.2: the snippet now handles false from getPageInfo() and from the TV functions, and returns an empty string when docid is empty or 0.)
+### FormLister snippet
+Fixed fatal error "idn_to_ascii(): Argument #1 ($domain) must not be empty" in
+assets/snippets/FormLister/lib/Validator.php
+(sanitizeEmail(): a value with no @ or with nothing after it, such as a username typed into an email field, is now returned unchanged and fails validation normally instead of causing a ValueError. The domain is split at the last @, and the ValueError is caught. Affects every form that uses the email rule, including login.)
 ### Store module (Extras)
 Fixed “Undefined array key” warnings and “mysqli::escape_string(): Passing null” deprecations in
 assets/modules/store/installer/instprocessor-fast.php
