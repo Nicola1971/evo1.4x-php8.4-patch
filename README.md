@@ -52,3 +52,8 @@ Fixed “Constant E_STRICT is deprecated” (PHP 8.4) in
 manager/includes/protect.inc.php
 manager/includes/document.parser.class.inc.php
 (E_STRICT removed from error_reporting(), from detectError() and from the error type list and log level switch in messageQuit(). No notice has used E_STRICT since PHP 7.0, so behaviour is unchanged on PHP 7.4 and 8.x.)
+
+### Error backtrace (core)
+Fixed “Undefined array key "type"” warnings in get_backtrace() in
+manager/includes/document.parser.class.inc.php
+(Backtrace frames for plain functions, include, require and eval have no type key, and frames for internal callbacks have no file or line. These keys are now read with a default, so the backtrace table is unchanged. The warning appeared whenever messageQuit() logged an error, such as a failed query.)
