@@ -46,3 +46,9 @@ assets/modules/store/installer/setup.info.php
 Fixed the empty resource overview in
 manager/actions/welcome.static.php
 (getRecentInfoList(): the query loaded only 6 fields, so long title, description, summary and alias always showed “(Not set)” and the template always showed “(blank)”. It now also loads longtitle, description, introtext, alias, type, cacheable, hidemenu and template, but still not content. This isn’t a PHP 8 issue: the bug dates back to 1.4.13. It was introduced by commit c433ac00 in evolution-cms/evolution and is still present in 1.4.37.)
+
+### Error reporting (core)
+Fixed “Constant E_STRICT is deprecated” (PHP 8.4) in
+manager/includes/protect.inc.php
+manager/includes/document.parser.class.inc.php
+(E_STRICT removed from error_reporting(), from detectError() and from the error type list and log level switch in messageQuit(). No notice has used E_STRICT since PHP 7.0, so behaviour is unchanged on PHP 7.4 and 8.x.)
